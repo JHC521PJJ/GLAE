@@ -1,26 +1,34 @@
-# EfficientAD
-Unofficial implementation of paper https://arxiv.org/abs/2303.14535
+# GLAE
+
+Official code for the paper: GLAE: global-local feature autoencoder for image logical anomaly detection
+
+<!-- PROJECT SHIELDS -->
+
+<!-- PROJECT LOGO -->
+<br />
+
+<p align="center">
+  <a href="https://github.com/shaojintian/Best_README_template/">
+    <img src="images/glae.svg" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Architecture of Global-local Feature Autoencoder</h3>
+  
+  </p>
+
+</p>
+
 
 ## Results
 
-| Model         | Dataset    | Official Paper | efficientad.py |
+| Model         | Dataset    | Official Paper | Our Reproduction |
 |---------------|------------|----------------|----------------|
-| EfficientAD-M | VisA       | 98.1           | pending        |
-| EfficientAD-M | Mvtec LOCO | 90.7           | 90.1           |
+| EfficientAD-M | VisA       | 98.1           | 98.1        |
+| EfficientAD-M | Mvtec LOCO | 90.7           | 89.9           |
 | EfficientAD-M | Mvtec AD   | 99.1           | 99.1           |
-| EfficientAD-S | VisA       | 97.5           | pending        |
-| EfficientAD-S | Mvtec LOCO | 90.0           | 89.5           |
-| EfficientAD-S | Mvtec AD   | 98.8           | 98.8           |
-
-
-## Benchmarks
-
-| Model         | GPU   | Official Paper | benchmark.py |
-|---------------|-------|----------------|--------------|
-| EfficientAD-M | A6000 | 4.5 ms         | 4.4 ms       |
-| EfficientAD-M | A100  | -              | 4.6 ms       |
-| EfficientAD-M | A5000 | 5.3 ms         | 5.3 ms       |
-
+| GLAE | VisA       | -          | 98.2        |
+| GLAE | Mvtec LOCO | -           | 91.1           |
+| GLAE | Mvtec AD   | -          | 98.2           |
 
 ## Setup
 
@@ -28,76 +36,30 @@ Unofficial implementation of paper https://arxiv.org/abs/2303.14535
 
 ```
 Python==3.10
-torch==1.13.0
-torchvision==0.14.0
-tifffile==2021.7.30
-tqdm==4.56.0
+torch==2.0.1
+torchvision==0.15.2
+tifffile==2023.4.12
+tqdm==4.65.0
 scikit-learn==1.2.2
+numpy==1.23.5
+Pillow==9.3.0
+scipy==1.10.1
+tabulate==0.9.0
+opencv-python==4.7.0.72
 ```
 
-### Mvtec AD Dataset
+## Training and Evaluation
 
-For Mvtec evaluation code install:
-
+Training with MVTec LOCO:
 ```
-numpy==1.18.5
-Pillow==7.0.0
-scipy==1.7.1
-tabulate==0.8.7
-tifffile==2021.7.30
-tqdm==4.56.0
+python3 main.py --subdataset screw_bag --mvtec_loco_path path/mvtec_loco --train_steps 65000 --device_gpu 0 --output_dir output --weights path/your_model.pth
 ```
 
-Download dataset (if you already have downloaded then set path to dataset (`--mvtec_ad_path`) when calling `efficientad.py`).
+Evaluation with MVTec LOCO:
 
 ```
-mkdir mvtec_anomaly_detection
-cd mvtec_anomaly_detection
-wget https://www.mydrive.ch/shares/38536/3830184030e49fe74747669442f0f282/download/420938113-1629952094/mvtec_anomaly_detection.tar.xz
-tar -xvf mvtec_anomaly_detection.tar.xz
-cd ..
+python3 inference.py 
 ```
-
-Download evaluation code:
-
-```
-wget https://www.mydrive.ch/shares/60736/698155e0e6d0467c4ff6203b16a31dc9/download/439517473-1665667812/mvtec_ad_evaluation.tar.xz
-tar -xvf mvtec_ad_evaluation.tar.xz
-rm mvtec_ad_evaluation.tar.xz
-```
-
-## efficientad.py
-
-Training and inference:
-
-```
-python efficientad.py --dataset mvtec_ad --subdataset bottle
-```
-
-Evaluation with Mvtec evaluation code:
-
-```
-python mvtec_ad_evaluation/evaluate_experiment.py --dataset_base_dir './mvtec_anomaly_detection/' --anomaly_maps_dir './output/1/anomaly_maps/mvtec_ad/' --output_dir './output/1/metrics/mvtec_ad/' --evaluated_objects bottle
-```
-
-## Reproduce paper results
-
-Reproducing results from paper requires ImageNet stored somewhere. Download ImageNet training images from https://www.kaggle.com/competitions/imagenet-object-localization-challenge/data or set `--imagenet_train_path` of `efficientad.py` to other folder with general images in children folders for example downloaded https://drive.google.com/uc?id=1n6RF08sp7RDxzKYuUoMox4RM13hqB1Jo
-
-Calls:
-
-```
-python efficientad.py --dataset mvtec_ad --subdataset bottle --model_size medium --weights models/teacher_medium.pth --imagenet_train_path ./ILSVRC/Data/CLS-LOC/train
-python efficientad.py --dataset mvtec_ad --subdataset cable --model_size medium --weights models/teacher_medium.pth --imagenet_train_path ./ILSVRC/Data/CLS-LOC/train
-python efficientad.py --dataset mvtec_ad --subdataset capsule --model_size medium --weights models/teacher_medium.pth --imagenet_train_path ./ILSVRC/Data/CLS-LOC/train
-...
-
-python efficientad.py --dataset mvtec_loco --subdataset breakfast_box --model_size medium --weights models/teacher_medium.pth --imagenet_train_path ./ILSVRC/Data/CLS-LOC/train
-python efficientad.py --dataset mvtec_loco --subdataset juice_bottle --model_size medium --weights models/teacher_medium.pth --imagenet_train_path ./ILSVRC/Data/CLS-LOC/train
-...
-```
-
-This produced the Mvtec AD results in `results/mvtec_ad_medium.json`.
 
 ## Mvtec LOCO Dataset
 
@@ -111,24 +73,3 @@ tar -xf mvtec_loco_anomaly_detection.tar.xz
 cd ..
 ```
 
-Download evaluation code:
-
-```
-wget https://www.mydrive.ch/shares/48245/a4e9922c5efa93f57b6a0ff9f5c6b969/download/430648014-1646847095/mvtec_loco_ad_evaluation.tar.xz
-tar -xvf mvtec_loco_ad_evaluation.tar.xz
-rm mvtec_loco_ad_evaluation.tar.xz
-```
-
-Install same packages as for Mvtec AD evaluation code, see above.
-
-Training and inference for LOCO sub-dataset:
-
-```
-python efficientad.py --dataset mvtec_loco --subdataset breakfast_box
-```
-
-Evaluation with LOCO evaluation code:
-
-```
-python mvtec_loco_ad_evaluation/evaluate_experiment.py --dataset_base_dir './mvtec_loco_anomaly_detection/' --anomaly_maps_dir './output/1/anomaly_maps/mvtec_loco/' --output_dir './output/1/metrics/mvtec_loco/' --object_name breakfast_box
-```
