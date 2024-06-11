@@ -19,12 +19,11 @@ plt.switch_backend('agg')
 
 def get_argparse():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--dataset', default='mvtec_loco',
-                        choices=['mvtec_ad', 'mvtec_loco'])
+    parser.add_argument('-d', '--dataset', default='mvtec_loco', choices=['mvtec_ad', 'mvtec_loco', 'visa'])
     parser.add_argument('-s', '--subdataset', default='juice_bottle',
                         help='One of 15 sub-datasets of Mvtec AD or 5' +
                              'sub-datasets of Mvtec LOCO')
-    parser.add_argument('-o', '--output_dir', default='./output/1')
+    parser.add_argument('-o', '--output_dir', default='./output')
     parser.add_argument('-w', '--weights', default='models/teacher_medium.pth')
     parser.add_argument('-i', '--imagenet_train_path',
                         default='none',
@@ -37,7 +36,10 @@ def get_argparse():
     parser.add_argument('-b', '--mvtec_loco_path',
                         default='./mvtec_loco_anomaly_detection',
                         help='Downloaded Mvtec LOCO dataset')
-    parser.add_argument('-t', '--train_steps', type=int, default=70000)
+    parser.add_argument('-v', '--visa_path',
+                        default='./visa_anomaly_detection',
+                        help='Downloaded VisA dataset')
+    parser.add_argument('-t', '--train_steps', type=int, default=65000)
     parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--device_gpu', type=int, default=0)
     return parser.parse_args()

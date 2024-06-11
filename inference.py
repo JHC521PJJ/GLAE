@@ -16,7 +16,7 @@ transform = transforms.Compose([
 
 out_channels = 384
 image_size = 256
-ad_object = "chip4"
+ad_object = "juice_bottle"
 ad_type = "good" # good, structural_anomalies, logical_anomalies
 
 train_output_dir = "./output/4/trainings/mvtec_loco/" + ad_object
@@ -90,11 +90,11 @@ def inference(score_list, time_list, ad_type="good"):
             
             
             
-    teacher_model = torch.load("./output/4/trainings/mvtec_loco/" + ad_object + "/teacher_final.pth").eval().cuda()
-    student_model = torch.load("./output/4/trainings/mvtec_loco/" + ad_object + "/student_final.pth").eval().cuda()
-    ae_model = torch.load("./output/4/trainings/mvtec_loco/" + ad_object + "/autoencoder_final.pth").eval().cuda()
+    teacher_model = torch.load("./output/trainings/mvtec_loco/" + ad_object + "/teacher_final.pth").eval().cuda()
+    student_model = torch.load("./output/trainings/mvtec_loco/" + ad_object + "/student_final.pth").eval().cuda()
+    ae_model = torch.load("./output/trainings/mvtec_loco/" + ad_object + "/autoencoder_final.pth").eval().cuda()
 
-    folder_path = "/data2/mvtec_loco/" + ad_object + "/test/" + ad_type
+    folder_path = "./mvtec_loco_anomaly_detection/" + ad_object + "/test/" + ad_type
     images = getImages(folder_path)
     processImages(images)
 
