@@ -8,7 +8,7 @@ Official code for the paper: GLAE: global-local feature autoencoder for image lo
 <br />
 
 <p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
+  <a href="https://github.com/JHC521PJJ/GLAE/tree/master/">
     <img src="images/glae.svg" alt="Logo" width="80" height="80">
   </a>
 
