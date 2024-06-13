@@ -19,7 +19,7 @@ Official code for the paper: GLAE: global-local feature autoencoder for image lo
 </p>
 
 
-## Results
+## 📸 Results
 
 | Model         | Dataset    | Official Paper | Our Reproduction |
 |---------------|------------|----------------|----------------|
@@ -30,7 +30,7 @@ Official code for the paper: GLAE: global-local feature autoencoder for image lo
 | GLAE | Mvtec LOCO | -           | 91.1           |
 | GLAE | Mvtec AD   | -          | 98.2           |
 
-## Setup
+## 🛠️ Setup
 
 ### Packages
 
@@ -48,7 +48,7 @@ tabulate==0.9.0
 opencv-python==4.7.0.72
 ```
 
-## Training and Evaluation
+## 🗝️ Training and Evaluation
 
 Training with MVTec LOCO:
 ```
@@ -61,7 +61,7 @@ Evaluation with MVTec LOCO:
 python3 inference.py 
 ```
 
-## Mvtec LOCO Dataset
+## 🤝 Mvtec LOCO Dataset
 
 Download dataset:
 
