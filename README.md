@@ -9,7 +9,7 @@ Official code for the paper: GLAE: global-local feature autoencoder for image lo
 
 <p align="center">
   <a href="https://github.com/JHC521PJJ/GLAE/tree/master/">
-    <img src="images/glae.SVG" alt="Logo" width="650" height="350">
+    <img src="images/glae.SVG" alt="Logo" width="700" height="400">
   </a>
 
   <h3 align="center">Architecture of Global-local Feature Autoencoder</h3>
