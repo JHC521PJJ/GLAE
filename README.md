@@ -3,21 +3,22 @@
 Official code for the paper: GLAE: global-local feature autoencoder for image logical anomaly detection
 
 <!-- PROJECT SHIELDS -->
-
 <!-- PROJECT LOGO -->
 <br />
-
 <p align="center">
   <a href="https://github.com/JHC521PJJ/GLAE/tree/master/">
     <img src="images/glae.SVG" alt="Logo" width="700" height="400">
   </a>
 
   <h3 align="center">Architecture of Global-local Feature Autoencoder</h3>
+  <p align="center">
+| <a href="https://arxiv.org/abs/2309.06180"><b>Paper</b></a> | 
   
   </p>
 
 </p>
 
+---
 
 ## 📸 Results
 
