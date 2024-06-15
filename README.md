@@ -1,6 +1,6 @@
 # GLAE
 
-Official code for the paper: GLAE: global-local feature autoencoder for image logical anomaly detection
+
 
 <!-- PROJECT SHIELDS -->
 <!-- PROJECT LOGO -->
@@ -17,6 +17,10 @@ Official code for the paper: GLAE: global-local feature autoencoder for image lo
   </p>
 
 </p>
+
+---
+
+Official code for the paper: GLAE: global-local feature autoencoder for image logical anomaly detection. GLAE employs a novel global feature extractor as the encoder (GFencoder), which introduces one-dimensional convolutions in two differ-ent directions to extract global semantic information from images, followed by two-dimensional convolutions for local feature constraints. This design significantly reduces computational costs while reconstructing global-local information of images. 
 
 ---
 
