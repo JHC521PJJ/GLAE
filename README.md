@@ -1,7 +1,6 @@
 # GLAE
 
 
-
 <!-- PROJECT SHIELDS -->
 <!-- PROJECT LOGO -->
 <br />
@@ -10,7 +9,7 @@
     <img src="images/glae.SVG" alt="Logo" width="700" height="400">
   </a>
 
-  <h3 align="center">Architecture of Global-local Feature Autoencoder</h3>
+  <h3 align="center">Global-local Feature Autoencoder for Image Logical Anomaly Detection</h3>
   <p align="center">
 | <a href="https://github.com/JHC521PJJ/GLAE"><b>Paper</b></a> | 
   
