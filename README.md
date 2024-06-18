@@ -11,7 +11,7 @@
 
   <h3 align="center">Global-local Feature Autoencoder for Image Logical Anomaly Detection</h3>
   <p align="center">
-| <a href="https://github.com/JHC521PJJ/GLAE"><b>Paper</b></a> | 
+| <a href="https://doi.org/10.21203/rs.3.rs-3842133/v1"><b>Paper</b></a> | 
   
   </p>
 
